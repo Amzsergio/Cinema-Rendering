@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:http_cinema/config/helpers/human_formats.dart';
 import 'package:http_cinema/domain/entities/movie.dart';
 
 class MoviesHorizontalListview extends StatelessWidget {
@@ -47,6 +48,9 @@ class _Slide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyles = Theme.of(context).textTheme;
+    final goldenColor = Colors.yellow.shade800;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
@@ -73,6 +77,28 @@ class _Slide extends StatelessWidget {
                   return FadeIn(child: child);
                 },
               ),
+            ),
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: 150,
+            child: Text(
+              movie.title,
+              maxLines: 2,
+              style: textStyles.bodySmall,
+            ),
+          ),
+          SizedBox(
+            width: 135,
+            child: Row(
+              children: [
+                Icon(Icons.star_half_outlined, color: goldenColor),
+                const SizedBox(width: 3),
+                Text('${movie.voteAverage}',
+                    style: textStyles.bodyMedium?.copyWith(color: goldenColor)),
+                const Spacer(),
+                Text(HumanFormat.number(movie.voteCount))
+              ],
             ),
           )
         ],
