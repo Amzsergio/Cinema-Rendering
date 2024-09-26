@@ -37,18 +37,46 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final slideShowMovies = ref.watch(movieSlidesShowProvider);
 
-    return Column(
-      children: [
-        const CustomAppBar(),
-        MovieSlideshow(movies: slideShowMovies),
-        MoviesHorizontalListview(
-          movies: nowPlayingMovies,
-          title: 'Cine',
-          subTitle: 'Sep 25',
-          loadNextPage: () =>
-              ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-        )
-      ],
-    );
+    return CustomScrollView(slivers: [
+      SliverList(
+        delegate: SliverChildBuilderDelegate((context, index) {
+          return Column(
+            children: [
+              const CustomAppBar(),
+              MovieSlideshow(movies: slideShowMovies),
+              MoviesHorizontalListview(
+                movies: nowPlayingMovies,
+                title: 'Cine',
+                subTitle: 'Sep 25',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              MoviesHorizontalListview(
+                movies: nowPlayingMovies,
+                title: 'Cine',
+                subTitle: 'Sep 25',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              MoviesHorizontalListview(
+                movies: nowPlayingMovies,
+                title: 'Cine',
+                subTitle: 'Sep 25',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              MoviesHorizontalListview(
+                movies: nowPlayingMovies,
+                title: 'Cine',
+                subTitle: 'Sep 25',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              const SizedBox(height: 10),
+            ],
+          );
+        }, childCount: 1),
+      )
+    ]);
   }
 }
