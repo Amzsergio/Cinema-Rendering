@@ -27,9 +27,7 @@ class MovieSlideshow extends StatelessWidget {
               )),
           itemCount: movies.length,
           itemBuilder: (context, index) {
-            return _Slide(
-              movie: movies[index],
-            );
+            return _Slide(movie: movies[index]);
           }),
     );
   }
