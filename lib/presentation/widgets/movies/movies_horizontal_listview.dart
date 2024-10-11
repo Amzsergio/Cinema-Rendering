@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:http_cinema/config/helpers/human_formats.dart';
@@ -92,6 +94,11 @@ class _Slide extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
                 movie.posterPath,
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
+                  log('Error loading image: $exception');
+                  return const Text('Error al cargar la imagen');
+                },
                 width: 150,
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress != null) {

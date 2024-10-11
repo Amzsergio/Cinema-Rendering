@@ -58,6 +58,10 @@ class _Slide extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Image.network(
             movie.backdropPath,
+            errorBuilder: (BuildContext context, Object exception,
+                StackTrace? stackTrace) {
+              return const Text('Error al cargar la imagen');
+            },
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress != null) {

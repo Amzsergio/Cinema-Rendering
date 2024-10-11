@@ -25,6 +25,8 @@ class MoviedbDatasource extends MoviesDatasource {
         'api_key': Environment.theMovieDbKey,
         'language': 'es-MX'
       },
+      connectTimeout: const Duration(milliseconds: 5000),
+      receiveTimeout: const Duration(milliseconds: 12000),
     ),
   );
 
