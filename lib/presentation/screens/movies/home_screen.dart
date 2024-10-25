@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http_cinema/presentation/providers/movies/initial_loader_provider.dart';
@@ -49,9 +47,10 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final topRatedMovies = ref.watch(topRatedMoviesProvider);
     final upcomingMovies = ref.watch(upcomingMoviesProvider);
 
-    for (var movie in nowPlayingMovies) {
-      log('${movie.title}: ${movie.backdropPath}');
-    }
+    // for (var movie in nowPlayingMovies) {
+    //   log('${movie.title}: ${movie.backdropPath}');
+    // }
+    //!Debug
 
     return CustomScrollView(slivers: [
       const SliverAppBar(

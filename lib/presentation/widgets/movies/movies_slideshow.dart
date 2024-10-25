@@ -60,7 +60,8 @@ class _Slide extends StatelessWidget {
             movie.backdropPath,
             errorBuilder: (BuildContext context, Object exception,
                 StackTrace? stackTrace) {
-              return const Text('Error al cargar la imagen');
+              return Image.network(
+                  'https://img.freepik.com/premium-vector/error-404-with-cute-blue-sticky-notes-mascot_152558-79971.jpg?w=740');
             },
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) {

@@ -89,20 +89,16 @@ class _Slide extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 150,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: SizedBox(
+              width: 150,
+              height: 225,
               child: Image.network(
                 movie.posterPath,
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
-                  log('Error loading image: $exception');
-                  return const Text('Error al cargar la imagen');
-                },
-                width: 150,
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress != null) {
+                    log('loading image: ${movie.title}');
                     return const Padding(
                       padding: EdgeInsets.all(8),
                       child: Center(
@@ -117,6 +113,15 @@ class _Slide extends StatelessWidget {
                     child: FadeIn(child: child),
                   );
                 },
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
+                  log('error image: $exception');
+                  return Image.network(
+                    'https://img.freepik.com/premium-vector/error-404-with-cute-blue-sticky-notes-mascot_152558-79971.jpg?w=740',
+                    fit: BoxFit.cover,
+                  );
+                },
+                width: 150,
               ),
             ),
           ),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http_cinema/domain/entities/movie.dart';
 import 'package:http_cinema/presentation/providers/movies/movies_repository_provider.dart';
@@ -44,7 +42,6 @@ class MoviesNotifier extends StateNotifier<List<Movie>> {
   Future<void> loadNextPage() async {
     if (isLoading) return;
     isLoading = true;
-    log('loading new movies');
     currentPage++;
     final List<Movie> movies = await fetchMoreMovies(page: currentPage);
     state = [...state, ...movies];
