@@ -28,7 +28,7 @@ class MovieMapper {
         backdropPath: (moviedb.backdropPath != '')
             ? 'https://image.tmdb.org/t/p/w500${moviedb.backdropPath}'
             : 'https://linnea.com.ar/wp-content/uploads/2018/09/404PosterNotFound.jpg',
-        genreIds: moviedb.genreIds.map((e) => e.name).toList(),
+        genreIds: moviedb.genres.map<String>((e) => e.name as String).toList(),
         id: moviedb.id,
         originalLanguage: moviedb.originalLanguage,
         originalTitle: moviedb.originalTitle,

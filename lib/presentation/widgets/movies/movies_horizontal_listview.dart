@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -98,7 +96,7 @@ class _Slide extends StatelessWidget {
                 movie.posterPath,
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress != null) {
-                    log('loading image: ${movie.title}');
+                    // log('loading image: ${movie.title}');
                     return const Padding(
                       padding: EdgeInsets.all(8),
                       child: Center(
@@ -115,7 +113,7 @@ class _Slide extends StatelessWidget {
                 },
                 errorBuilder: (BuildContext context, Object exception,
                     StackTrace? stackTrace) {
-                  log('error image: $exception');
+                  // log('error image: $exception');
                   return Image.network(
                     'https://img.freepik.com/premium-vector/error-404-with-cute-blue-sticky-notes-mascot_152558-79971.jpg?w=740',
                     fit: BoxFit.cover,
